@@ -1,0 +1,23 @@
+// app/dashboard/add_fund/verify/page.jsx
+"use client";
+
+import { useSearchParams } from "next/navigation";
+
+export default function VerifyDeposit() {
+  const params = useSearchParams();
+  const status = params.get("status");
+
+  return (
+    <div className="flex flex-col items-center justify-center h-[70vh]">
+      {status === "success" ? (
+        <div className="text-green-600 text-xl font-semibold">
+          ✅ Payment Successful! Your wallet has been updated.
+        </div>
+      ) : (
+        <div className="text-red-600 text-xl font-semibold">
+          ❌ Payment Failed. Please try again.
+        </div>
+      )}
+    </div>
+  );
+}
