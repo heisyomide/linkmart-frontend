@@ -1,11 +1,9 @@
-// app/dashboard/add_fund/verify/page.jsx
 "use client";
 
-export const dynamic = "force-dynamic";
-
+import { JSX, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 
-export default function VerifyDeposit() {
+function VerifyDepositContent() {
   const params = useSearchParams();
   const status = params.get("status");
 
@@ -21,5 +19,13 @@ export default function VerifyDeposit() {
         </div>
       )}
     </div>
+  );
+}
+
+export default function VerifyDeposit(): JSX.Element {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <VerifyDepositContent />
+    </Suspense>
   );
 }
